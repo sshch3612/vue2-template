@@ -46,7 +46,7 @@ export default {
             return treeMenu.map((item, index) => {
                 if (item.children) {
                     return (
-                        <el-submenu index={item.key}>
+                        <el-submenu index={item.path}>
                             <template slot="title">
                                 <i class="el-icon-location"></i>
                                 <span slot="title">{item.name}</span>
@@ -56,7 +56,7 @@ export default {
                     );
                 } else {
                     return (
-                        <el-menu-item key={item.key} index={item.key}>
+                        <el-menu-item key={item.key} index={item.path}>
                             <i class="el-icon-setting"></i>
                             <span slot="title">{item.name}</span>
                         </el-menu-item>

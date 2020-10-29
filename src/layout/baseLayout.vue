@@ -29,7 +29,8 @@
             </el-header>
 
             <el-main>
-                <slot></slot>
+                <router-view>
+                </router-view>
             </el-main>
         </el-container>
     </el-container>
