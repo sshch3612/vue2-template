@@ -76,7 +76,7 @@ export default {
         treeMenu,
     },
     props: {
-        pathConfig: {
+        menuData: {
             type: Array,
             default: function () {
                 return [

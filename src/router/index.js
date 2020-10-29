@@ -3,24 +3,34 @@ import Router from "vue-router";
 
 Vue.use(Router);
 
+
+/**
+ * 基础路由配置
+ */
+const baseRoutes = [
+
+];
+
+/**
+ * 菜单路由配置
+*/
+const menuRoutes = {
+    path: "/",
+    component: () => import("@/layout/baseLayout.vue"),
+    children: [
+        {
+            path: "",
+            name: "安全管控",
+        },
+    ],
+};
 const router = new Router({
     // mode: 'history',
     routes: [
-        {
-            path: "/",
-            component: () => import("@/views/index"),
-            children: [
-                {
-                    path: "",
-                    name: "安全管控",
-                    component: () => import("@/views/overview/index.vue"),
-                },
-            ],
-        },
+        ...baseRoutes,
+        menuRoutes
     ],
-});
-router.beforeEach((to, from, next) => {
-    next();
 });
 
 export default router;
+export { menuRoutes };

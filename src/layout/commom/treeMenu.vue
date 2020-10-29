@@ -1,73 +1,13 @@
 
 <script>
+import { menuRoutes } from "@/router";
 export default {
     name: "treeMenu",
     props: {
-        pathConfig: {
+        menuData: {
             type: Array,
             default: function () {
-                return [
-                    {
-                        path: "ee",
-                        icon: "ee",
-                        key: "1",
-                        name: "test1",
-                    },
-                    {
-                        path: "ee",
-                        icon: "ee",
-                        name: "test2",
-                        key: "2",
-                        children: [
-                            {
-                                path: "ee",
-                                icon: "ee",
-                                key: "21",
-                                name: "test21",
-                            },
-                            {
-                                path: "ee",
-                                icon: "ee",
-                                key: "22",
-                                name: "test22",
-                                children: [
-                                    {
-                                        path: "ee",
-                                        icon: "ee",
-                                        key: "21",
-                                        name: "test21",
-                                        children: [
-                                            {
-                                                path: "ee",
-                                                icon: "ee",
-                                                key: "211",
-                                                name: "test21",
-                                            },
-                                            {
-                                                path: "ee",
-                                                icon: "ee",
-                                                key: "212",
-                                                name: "test21",
-                                            },
-                                        ],
-                                    },
-                                    {
-                                        path: "ee",
-                                        icon: "ee",
-                                        key: "22",
-                                        name: "test21",
-                                    },
-                                ],
-                            },
-                        ],
-                    },
-                    {
-                        path: "ee",
-                        icon: "ee",
-                        name: "test3",
-                        key: "3",
-                    },
-                ];
+                return [];
             },
         },
         collapse: {
@@ -78,6 +18,27 @@ export default {
         },
     },
     methods: {
+        _renderRoutemenu(routes) {
+            if (!Array.isArray(routes)) throw new Error("路由格式解析出错");
+            if (routes.length < 0) return;
+            return routes.map((route) => {
+                const { name, icon, path, children } = route;
+                if (children) {
+                    return {
+                        name,
+                        icon,
+                        path,
+                        children: this._renderRoutemenu(children),
+                    };
+                } else {
+                    return {
+                        name,
+                        icon,
+                        path,
+                    };
+                }
+            });
+        },
         renderMenu(treeMenu) {
             if (!Array.isArray(treeMenu)) throw new Error("菜单结构出错!");
             if (treeMenu.length < 0) return;
@@ -115,7 +76,11 @@ export default {
                 router={true}
                 collapse-transition={true}
             >
-                {this.renderMenu(this.pathConfig)}
+                {this.renderMenu(
+                    this.menuData.length > 0
+                        ? this.menuData
+                        : this._renderRoutemenu(menuRoutes.children)
+                )}
             </el-menu>
         );
     },
