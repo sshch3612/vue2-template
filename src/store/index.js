@@ -1,11 +1,11 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import attendance from "./modules/attendance";
+// import attendance from "./modules/attendance";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
     modules: {
-        attendance
+        // attendance
     },
 });

@@ -10,9 +10,9 @@ export default {
     data() {
         return {};
     },
-    methods: {},
-    mounted() {},
-    beforeDestroy() {},
+    // methods: {},
+    // mounted() {},
+    // beforeDestroy() {},
 };
 </script>
 
