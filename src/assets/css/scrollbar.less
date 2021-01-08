@@ -1,0 +1,26 @@
+/**
+*  滚动条样式
+*/
+.scrollbar(@w: 10px, @h: 4px) {
+    &::-webkit-scrollbar {
+        /*滚动条整体样式*/
+        width : @w;
+        /*高宽分别对应横竖滚动条的尺寸*/
+        height: @h;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        /*滚动条里面小方块*/
+        border-radius: 10px;
+        box-shadow   : inset 0 0 5px rgba(0, 0, 0, 0.2);
+        background   : #E1E8FA;
+        cursor       : pointer;
+    }
+
+    &::-webkit-scrollbar-track {
+        /*滚动条里面轨道*/
+        box-shadow   : inset 0 0 5px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        background   : #0A2C66;
+    }
+}

@@ -13,12 +13,14 @@ import echarts from "./assets/js/echarts";
 import store from "./store";
 import filter from "./filter";
 
+import { Search } from "vant";
 
 import "./assets/css/variable.less";
 import "./assets/css/global.less";
 // import './util/rem.js'
 import moment from "moment";
 
+Vue.use(Search);
 Vue.use(ElementUI);
 
 Vue.config.productionTip = false;

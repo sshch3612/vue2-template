@@ -27,10 +27,9 @@
                     </span>
                 </div>
             </el-header>
-
+            <tagsView></tagsView>
             <el-main>
-                <router-view>
-                </router-view>
+                <router-view> </router-view>
             </el-main>
         </el-container>
     </el-container>
@@ -72,9 +71,11 @@
 </style>
 <script>
 import treeMenu from "./commom/treeMenu";
+import tagsView from "@/components/tagsview";
 export default {
     components: {
         treeMenu,
+        tagsView,
     },
     props: {
         menuData: {

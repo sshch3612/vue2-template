@@ -1,20 +1,22 @@
 
 const state = () => ({
-    count: 0
+    count: "33333"
 });
 
 const actions = {
     // -> dispatch('test/change')
     change({ state, commit, rootState }, { params }) {
-    /**/
+        /**/
     },
 
 };
 
 const mutations = {
     // -> commit('test/change')
-    change(state, data) {
-    /** */
+    change(state, payload) {
+        /** */
+        console.log(payload, 444);
+        state.count = payload;
     },
 };
 

@@ -1,6 +1,13 @@
 import Vue from "vue";
 import Router from "vue-router";
 
+// fix Uncaught (in promise) NavigationDuplicated: Avoided redundant navigation to current location: "/markdown".
+const originalPush = Router.prototype.push;
+Router.prototype.push = function push(location) {
+    return originalPush.call(this, location).catch(err => err);
+};
+
+
 Vue.use(Router);
 
 
@@ -20,19 +27,50 @@ const menuRoutes = {
     component: () => import("@/layout/baseLayout.vue"),
     children: [
         {
-            path: "/",
+            path: "",
             name: "首页",
+            children: [{
+                path: "/",
+                name: "首页二级",
+                meta: {
+                    tagId: "home"
+                },
+                component: () => import("@/views/index.vue"),
+            }]
         },
         {
             path: "",
             name: "编辑器(二次开发)",
-            children: [
-                {
-                    path: "/markdown",
-                    name: "MarkDown编辑器",
-                    component: () => import("@/components/markdown/index.vue")
-                }
+            children: [{
+                path: "",
+                name: "二级导航",
+                children: [
+                    {
+                        path: "/markdown",
+                        name: "MarkDown编辑器",
+                        meta: {
+                            tagId: "markdown"
+                        },
+                        component: () => import("@/components/markdown/index.vue")
+                    }
+                ]
+            },
+            {
+                path: "",
+                name: "二级导航12",
+                children: [
+                    {
+                        path: "/ceshi",
+                        name: "测试",
+                        meta: {
+                            tagId: "ceshi"
+                        },
+                        component: () => import("@/views/index.vue"),
+                    }
+                ]
+            }
             ]
+
         },
     ],
 };
