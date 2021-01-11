@@ -6,7 +6,7 @@ import "normalize.css/normalize.css"; // a modern alternative to CSS resets
 import "babel-polyfill";
 
 import App from "./App.vue";
-import router from "./router";
+import router from "./router/permission";
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
 import echarts from "./assets/js/echarts";

@@ -25,7 +25,9 @@ export default {
         };
     },
     mounted() {
+        const { dispatch } = this.$store;
         this.menuRoutesData = this._renderRoutemenu(menuRoutes.children);
+        dispatch("menudata/menu", this.menuRoutesData);
     },
     methods: {
         _renderRoutemenu(routes) {

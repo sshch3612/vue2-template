@@ -26,6 +26,7 @@
                         <i class="el-icon el-icon-s-unfold"></i>
                     </span>
                 </div>
+                <breacrumb></breacrumb>
             </el-header>
             <tagsView></tagsView>
             <el-main>
@@ -39,6 +40,10 @@
     background-color: rgb(238, 241, 246);
     color: #333;
     line-height: 60px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
 }
 
 .el-aside {
@@ -63,6 +68,7 @@
     transition: all 0.5s ease-in;
 }
 .el-layout-collapse {
+    width: 45px;
     .el-icon {
         font-size: 22px;
         cursor: pointer;
@@ -71,11 +77,13 @@
 </style>
 <script>
 import treeMenu from "./commom/treeMenu";
+import breacrumb from "./commom/breadcrumb";
 import tagsView from "@/components/tagsview";
 export default {
     components: {
         treeMenu,
         tagsView,
+        breacrumb,
     },
     props: {
         menuData: {
