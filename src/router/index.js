@@ -72,6 +72,20 @@ const menuRoutes = {
             ]
 
         },
+        {
+            path: "",
+            name: "Table",
+            children: [
+                {
+                    path: "/baseTable",
+                    name: "基础图表",
+                    meta: {
+                        tagId: "baseTable"
+                    },
+                    component: () => import("@/views/Table/baseTable.vue"),
+                }
+            ]
+        }
     ],
 };
 const router = new Router({
